@@ -83,30 +83,23 @@
 3. Spring Data JPA 구현
    `Movie` Entity를 MariaDB의 `movies` 테이블에 매핑했습니다. SQL 실습용 테이블은 `movie_sql`이므로 JPA Entity 테이블과 이름이 다릅니다.
 
-   | Annotation | 역할 |
-   |---|---|
-   | `@Entity` | 클래스를 JPA Entity로 지정 |
-   | `@Table(name = "movies")` | Entity가 매핑될 테이블 이름 지정 |
-   | `@Id` | 기본 키 필드 지정 |
-   | `@GeneratedValue(strategy = GenerationType.IDENTITY)` | MariaDB의 자동 증가 방식으로 ID 생성 |
-   | `@Column` | 컬럼의 이름이나 제약 조건 지정 |
+   `@Entity`  - 클래스를 JPA Entity로 지정 
+   `@Table(name = "movies")` - Entity가 매핑될 테이블 이름 지정
+   `@Id` - 기본 키 필드 지정 
+   `@GeneratedValue(strategy = GenerationType.IDENTITY)` - MariaDB의 자동 증가 방식으로 ID 생성 
+   `@Column` -  컬럼의 이름이나 제약 조건 지정 
 
 4. Repository와 계층구조
    `MovieRepository`는 `JpaRepository<Movie, Long>`을 상속합니다. `MovieService`가 Repository를 이용해 데이터를 처리하고, `MovieController`가 REST 요청과 응답을 담당합니다.
+   Controller → Service → JpaRepository → Hibernate → MariaDB
 
-```text
-Controller → Service → JpaRepository → Hibernate → MariaDB
-```
 
 5. REST API Endpoint
-
-| Method | Endpoint | 기능 |
-|---|---|---|
-| POST | `/api/movies` | 영화 등록 |
-| GET | `/api/movies` | 전체 영화 조회 |
-| GET | `/api/movies/{id}` | 영화 단건 조회 |
-| PUT | `/api/movies/{id}` | 영화 정보 수정 |
-| DELETE | `/api/movies/{id}` | 영화 삭제 |
+ POST - `/api/movies`  영화 등록 
+ GET - `/api/movies`  전체 영화 조회 
+ GET - `/api/movies/{id}` 영화 단건 조회 
+ PUT - `/api/movies/{id}` 영화 정보 수정
+ DELETE - `/api/movies/{id}`  영화 삭제 
 
 ### 영화 등록 요청 예시
 
@@ -298,7 +291,7 @@ SELECT * FROM movies;
 
 ### AI Usage
 
-AI를 Spring Data JPA 개념 확인, 코드 작성 과정의 오류 분석, Render 및 Postman 테스트 순서 확인에 활용했습니다. 제안된 코드를 프로젝트에 적용한 뒤 IntelliJ에서 애플리케이션을 실행하고, Postman과 DBeaver에서 CRUD 및 데이터 저장 결과를 직접 확인했습니다.
+AI를 Spring Data JPA 개념 확인, 코드 작성 과정의 오류 분석, Render 및 Postman 테스트 순서 확인에 활용했습니다. 주어진 코드를 프로젝트에 적용한 다음에 IntelliJ에서 애플리케이션을 실행하고 Postman과 DBeaver에서 CRUD 및 데이터 저장 결과를 확인했습니다.
 
 - AI 사용률: 30%
 
