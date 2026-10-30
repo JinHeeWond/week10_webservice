@@ -189,12 +189,10 @@ DELETE `/api/movies/2`를 요청해 데이터를 삭제했습니다. 이후 같�
 
 SQL을 직접 사용할 때는 `INSERT`, `SELECT`, `UPDATE`, `DELETE` 문을 직접 작성했습니다. JPA에서는 Repository 메서드를 호출하고, Hibernate가 Entity와 데이터베이스 테이블을 연결해 SQL을 실행합니다.
 
-| JpaRepository 메서드 | 사용한 기능 및 확인 결과 |
-|---|---|
-| `save()` | 영화 등록과 수정에 사용했고, API 응답 및 DBeaver에서 결과를 확인했습니다. |
-| `findAll()` | 전체 영화 목록을 조회했습니다. |
-| `findById()` | ID로 영화를 조회했습니다. IntelliJ Console에서 해당 SELECT SQL을 확인했습니다. |
-| `deleteById()` | ID로 영화를 삭제했습니다. DBeaver와 API 조회 결과에서 삭제를 확인했습니다. |
+`save()` - 영화 등록과 수정에 사용했고, API 응답 및 DBeaver에서 결과를 확인했습니다. 
+`findAll()` - 전체 영화 목록을 조회했습니다. 
+`findById()` - ID로 영화를 조회했습니다. IntelliJ Console에서 해당 SELECT SQL을 확인했습니다. 
+`deleteById()` - ID로 영화를 삭제했습니다. DBeaver와 API 조회 결과에서 삭제를 확인했습니다. 
 
 ### IntelliJ Console에서 확인한 Hibernate SQL
 
@@ -237,9 +235,9 @@ SQL에 표시된 `?`는 실제 요청에서 전달된 값을 Hibernate가 넣는
 
 5. 환경변수 설정
   -IntelliJ
-  Run → Edit Configurations → Environment Variables | `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` |
+  Run → Edit Configurations → Environment Variables  `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` 
   -Render
-  서비스 설정의 Environment 메뉴 | `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` |
+  서비스 설정의 Environment 메뉴 `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` 
 
 ### Render 배포 과정
 
@@ -251,13 +249,11 @@ SQL에 표시된 `?`는 실제 요청에서 전달된 값을 Hibernate가 넣는
 
 Postman으로 배포된 API에 요청을 보내 CRUD를 테스트했습니다.
 
-| 기능 | 요청 | 결과 |
-|---|---|---|
-| 등록 | POST `/api/movies` | 영화 등록 성공, 응답에서 생성된 영화 정보 확인 |
-| 전체 조회 | GET `/api/movies` | 영화 목록 응답 확인 |
-| 단건 조회 | GET `/api/movies/{id}` | 해당 ID의 영화 정보 확인 |
-| 수정 | PUT `/api/movies/{id}` | 영화 정보 수정 성공, 수정된 응답 확인 |
-| 삭제 | DELETE `/api/movies/{id}` | 삭제 성공, 이후 조회에서 데이터가 없음을 확인 |
+등록 - POST `/api/movies` | 영화 등록 성공, 응답에서 생성된 영화 정보 확인 |
+전체 조회 - GET `/api/movies` | 영화 목록 응답 확인 |
+단건 조회 - GET `/api/movies/{id}` | 해당 ID의 영화 정보 확인 |
+수정 - PUT `/api/movies/{id}` | 영화 정보 수정 성공, 수정된 응답 확인 |
+삭제 - DELETE `/api/movies/{id}` | 삭제 성공, 이후 조회에서 데이터가 없음을 확인 |
 
 ### MariaDB 저장 확인
 
