@@ -259,9 +259,8 @@ Postman으로 배포된 API에 요청을 보내 CRUD를 테스트했습니다.
 
 Render에서 새 영화 데이터를 POST로 등록한 뒤 DBeaver에서 다음 SQL을 실행했습니다.
 
-```sql
 SELECT * FROM movies;
-```
+
 
 조회 결과에서 Render로 등록한 영화가 확인되어 MariaDB에 데이터가 저장된 것을 확인했습니다. 삭제 요청 후에도 해당 데이터가 조회되지 않는 것을 확인했습니다.
 
