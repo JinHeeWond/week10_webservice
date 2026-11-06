@@ -6,12 +6,22 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.EntityListeners;
+import java.time.LocalDateTime;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+@EntityListeners(AuditingEntityListener.class)
+// JPA가 객체와 데이터베이스를 연결해서 관리하는 Entity로 지정함
 @Entity
+//Movie Entity를 데이터베이스의 movies 테이블과 연결
 @Table(name = "movies")
 public class Movie {
 
+    //id필드를 movies테이블의 기본키로 사용
     @Id
+    //MariaDB가 새 행을 저장할 때 기본 키 값을 자동으로 생성
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -28,6 +38,13 @@ public class Movie {
 
     @Column(name = "release_year")
     private Integer releaseYear;
+
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
     protected Movie() {
     }
@@ -78,5 +95,13 @@ public class Movie {
 
     public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 }
