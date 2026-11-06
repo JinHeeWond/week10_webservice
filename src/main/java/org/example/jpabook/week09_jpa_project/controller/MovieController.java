@@ -27,6 +27,25 @@ public class MovieController {
         return movieService.findAll();
     }
 
+    @GetMapping("/search/title")
+    public List<Movie> searchByTitle(@RequestParam String title) {
+        return movieService.searchByTitle(title);
+    }
+
+    @GetMapping("/search/genre-rating")
+    public List<Movie> searchByGenreAndRating(
+            @RequestParam String genre,
+            @RequestParam Double minRating,
+            @RequestParam Double maxRating) {
+        return movieService.searchByGenreAndRating(
+                genre, minRating, maxRating);
+    }
+
+    @GetMapping("/search/genre-rating-desc")
+    public List<Movie> searchByGenreOrderByRating(@RequestParam String genre) {
+        return movieService.searchByGenreOrderByRating(genre);
+    }
+
     @GetMapping("/{id}")
     public Movie findById(@PathVariable Long id) {
         return movieService.findById(id);
